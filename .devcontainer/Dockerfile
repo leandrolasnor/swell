@@ -3,7 +3,7 @@ RUN apk update && apk add \
     build-base tzdata git zsh wget \
     nano curl font-meslo-nerd shadow zsh-vcs
 
-ENV APP_HOME /app
+ENV APP_HOME /workspaces/swell
 WORKDIR $APP_HOME
 RUN gem install bundler --version '2.4.19'
 COPY . $APP_HOME
@@ -17,4 +17,4 @@ RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zs
 RUN sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
 RUN sed -i 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=powerlevel10k\/powerlevel10k/g' ~/.zshrc
 RUN sed -i -e '$aPOWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true' ~/.zshrc
-RUN sed -i -e '$a[[ ! -f /app/.p10k.zsh ]] || source /app/.p10k.zsh' ~/.zshrc
+RUN sed -i -e '$a[[ ! -f /workspaces/swell/.p10k.zsh ]] || source /workspaces/swell/.p10k.zsh' ~/.zshrc

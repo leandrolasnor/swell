@@ -3,7 +3,7 @@
 	"name": "Swell Challenge",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
-	"workspaceFolder": "/app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
     "runServices": [],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
