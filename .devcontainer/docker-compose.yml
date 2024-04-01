@@ -1,0 +1,12 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  app:
+    image: leandrolasnor/ruby:swell
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    container_name: app.swell
+    stdin_open: true
+    tty: true
+    command: sh

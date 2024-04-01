@@ -1,0 +1,42 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+	"name": "Swell Challenge",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/app",
+    "runServices": [],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// This can be used to network with other containers or the host.
+	"forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": ".devcontainer/boot.sh",
+    "postStartCommand": ".devcontainer/start.sh",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"Shopify.ruby-lsp",
+                "eamodio.gitlens",
+                "donjayamanne.githistory",
+                "EditorConfig.EditorConfig",
+                "MS-CEINTL.vscode-language-pack-pt-BR",
+                "shyykoserhiy.git-autoconfig",
+                "AiryShift.spaces-inside-braces",
+                "streetsidesoftware.code-spell-checker",
+                "naumovs.color-highlight",
+                "bierner.github-markdown-preview",
+                "karunamurti.rspec-snippets",
+                "miguelsolorio.symbols",
+                "drcika.apc-extension",
+                "connorshea.vscode-ruby-test-adapter"
+			]
+		}
+	},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "root"
+}
