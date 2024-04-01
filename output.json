@@ -1,0 +1,30 @@
+[
+  {
+    "erros": [
+
+    ],
+    "caixa": {
+      "caixaDisponivel": true,
+      "notas": {
+        "notasDez": 100,
+        "notasVinte": 50,
+        "notasCinquenta": 10,
+        "notasCem": 30
+      }
+    }
+  },
+  {
+    "erros": [
+      "caixa-em-uso"
+    ],
+    "caixa": {
+      "caixaDisponivel": true,
+      "notas": {
+        "notasDez": 100,
+        "notasVinte": 50,
+        "notasCinquenta": 10,
+        "notasCem": 30
+      }
+    }
+  }
+]
