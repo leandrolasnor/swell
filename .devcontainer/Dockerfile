@@ -8,6 +8,8 @@ WORKDIR $APP_HOME
 RUN gem install bundler --version '2.4.19'
 COPY . $APP_HOME
 
+RUN bundle install
+
 RUN rm -rf /root/.oh-my-zsh
 RUN sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 RUN usermod --shell /bin/zsh root
