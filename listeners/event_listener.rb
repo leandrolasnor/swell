@@ -1,15 +1,18 @@
 # frozen_string_literal: true
 
 class EventListener
-  def on_event(event)
+  def on_supply(event)
     payload = event[:payload]
-    case payload
-    in { caixa: {caixaDisponivel: true | false, notas: {notasCem: Integer, notasCinquenta: Integer, notasVinte: Integer, notasDez: Integer}}}
-      ::SupplyReducer.new(payload:).call
-    in {saque: {valor: Integer, horario: String}}
-      ::WithdrawReducer.new(payload:).call
-    else
-      $state
-    end
+    res = ::SupplyAction.new.(payload:)
+    puts res.exception.message if res.failure?
+    $state << res.value! if res.success?
+  end
+
+  def on_withdraw(event)
+    payload = event[:payload]
+    res = ::WithdrawAction.new.(payload:)
+    puts res.exception.message if res.failure?
+    $last_withdraw = payload if res.success?
+    $state << res.value! if res.success?
   end
 end
