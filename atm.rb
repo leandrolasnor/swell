@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 $last_withdraw = { saque: { valor: 0, horario: '1970-01-01T00:00:00.000Z' } }
-$caixa = {
+$atm = {
   caixaDisponivel: false,
   notas: {
     notasDez: 0,
@@ -23,7 +23,7 @@ require 'json'
 require 'pry'
 
 Dir['./commands/**/*.rb'].each { require _1 }
-Dir['./reducers/**/*.rb'].each { require _1 }
+Dir['./actions/**/*.rb'].each { require _1 }
 Dir['./listeners/**/*.rb'].each { require _1 }
 Dir['./overrides/**/*.rb'].each { require _1 }
 
