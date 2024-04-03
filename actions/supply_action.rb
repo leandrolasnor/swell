@@ -13,7 +13,7 @@ class SupplyAction
   def call(payload:)
     Try do
       if $atm.empty?
-        $atm = payload
+        $atm = payload[:caixa]
         @state = payload.merge(erros: [])
       elsif $atm[:caixaDisponivel] == true
         @state[:erros] = ["caixa-em-uso"]
