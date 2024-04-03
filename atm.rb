@@ -1,15 +1,7 @@
 # frozen_string_literal: true
 
 $last_withdraw = { saque: { valor: 0, horario: '1970-01-01T00:00:00.000Z' } }
-$atm = {
-  caixaDisponivel: false,
-  notas: {
-    notasDez: 0,
-    notasVinte: 0,
-    notasCinquenta: 0,
-    notasCem: 0
-  }
-}
+$atm = {}
 $state = []
 
 require 'active_support/all'
