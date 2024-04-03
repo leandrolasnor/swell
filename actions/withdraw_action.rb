@@ -12,16 +12,16 @@ class WithdrawAction
 
   def call(payload:)
     Try do
-      if $atm.blank?
+      if $atm.empty?
         @state[:caixa] = {}
         @state[:erros] = ["caixa-inexistente"]
       elsif $atm[:caixaDisponivel] == false
         @state[:caixa] = $atm
         @state[:erros] = ["caixa-indisponivel"]
-      elsif withdraw_duplicated?
+      elsif withdraw_duplicated?(payload)
         @state[:caixa] = {}
         @state[:erros] = ["saque-duplicado"]
-      elsif (total_atm < payload[:saque][:valor].to_i) || !calculate_remainder?
+      elsif (total_atm < payload[:saque][:valor].to_i) || !calculate_remainder?(payload)
         @state[:caixa] = $atm
         @state[:erros] = ["valor-indisponivel"]
       else
@@ -36,7 +36,7 @@ class WithdrawAction
 
   private
 
-  def calculate_remainder?
+  def calculate_remainder?(payload)
     notasCem, rest = payload[:saque][:valor].to_i.divmod(100)
     notasCinquenta, rest = rest.divmod(50) if rest.positive?
     notasVinte, rest = rest.divmod(20) if rest.positive?
@@ -52,7 +52,7 @@ class WithdrawAction
     }
   end
 
-  def withdraw_duplicated?
+  def withdraw_duplicated?(payload)
     (($last_withdraw[:saque][:horario].to_time + 10.minutes).to_i >= payload[:saque][:horario].to_time.to_i) && \
       $last_withdraw[:saque][:valor] == payload[:saque][:valor]
   end
