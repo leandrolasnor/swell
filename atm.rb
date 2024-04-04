@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # frozen_string_literal: true
 
 $last_withdraw = { saque: { valor: 0, horario: '1970-01-01T00:00:00.000Z' } }
